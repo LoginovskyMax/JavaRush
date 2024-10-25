@@ -1,0 +1,42 @@
+$primary-color: #ee8d1e;
+@import 'button';
+%button-shared {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: aqua;
+    }
+@mixin rounded-button($color) {
+    background-color: $color;
+    border-radius: 50%;
+    padding: 10px 20px;
+    cursor: pointer;
+   
+}
+
+#content{
+    color: burlywood;
+    font-size: large;
+}
+.footer{
+    color: black;
+    background-color: $primary-color;
+    width: 100%;
+    &_item{
+        background-color: $primary-color;
+        &:hover{
+            background-color: red;
+            cursor: pointer;
+        }
+    }
+    &_rounded-green{
+        @include rounded-button(green);
+    }
+    &_rounded-blue{
+        @include rounded-button(blue);
+        color: white
+    }
+}
+.header{
+    @extend .footer;
+}
+

@@ -11,13 +11,28 @@
     color: var(--font-family);
     font-family: var(--font-family);
 }
-.header{
-    background-color: aqua;
-    width: 1000px;
-    margin: 0 auto;
+.footer{
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: clamp(500px, 50%, 700px);
 }
+.footer_item{
+    width: calc(100% / 4 - 10px);
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
 .content{
     width: 30%;
     height: 50px;
@@ -35,12 +50,18 @@
     }
 }
 @media (max-width: 500px) {
+    :root {
+        --primary-color: #853f16;
+        }
     .header{
         flex-direction: column;
         gap: 10px;
     }
     .content{
       width: 100%;
+    }
+    .footer-item{
+       width: calc(50% - 10px);
     }
 }
 .input:disabled{
