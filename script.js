@@ -22,6 +22,10 @@ let obj1 = {
     surName: 'Pattison'
 };
 obj1.age = 23
+for (let key in obj1) {
+  console.log(key);
+  console.log(obj1[key]);
+}
 let Pi = Math.PI
 let x = 4.2
 // console.log(obj1);
@@ -93,26 +97,26 @@ let radiationLevel = 50;
 // } else {
 //     console.log("Извините, у вас недостаточно крышек.");
 // }
-let playerLevel = 'newbie';
-let playerSkill = 'newbie'
+// let playerLevel = 'newbie';
+// let playerSkill = 'newbie'
 // console.log(playerLevel === playerSkill);
 
-switch (playerLevel.toLowerCase().trim()) {
-    case 'newbie':
-    console.log('Скидка 5% на все товары в магазине Nuka-Cola.');
-    break;
-    case 100:
-        console.log('Скидка 100% на все товары в магазине Nuka-Cola.');
-        break;
-    case 'veteran':
-    console.log('Скидка 10% на все оружие и броню.');
-    break;
-    case 'legend':
-    console.log('Бесплатная бутылка Nuka-Cola Quantum!');
-    break;
-    default:
-    console.log('У вас нет скидки.');
-}
+// switch (playerLevel.toLowerCase().trim()) {
+//     case 'newbie':
+//     console.log('Скидка 5% на все товары в магазине Nuka-Cola.');
+//     break;
+//     case 100:
+//         console.log('Скидка 100% на все товары в магазине Nuka-Cola.');
+//         break;
+//     case 'veteran':
+//     console.log('Скидка 10% на все оружие и броню.');
+//     break;
+//     case 'legend':
+//     console.log('Бесплатная бутылка Nuka-Cola Quantum!');
+//     break;
+//     default:
+//     console.log('У вас нет скидки.');
+// }
 // console.log(123);
 
 // for (let i = 10; i >= 1; i--) {
@@ -133,14 +137,62 @@ switch (playerLevel.toLowerCase().trim()) {
 //     }
 //     console.log(i)
 // }
-let i = 0;
-do {
-  console.log(`Nuka-Cola ${i}`);
-  i++;
-} while (false);
+// let i = 0;
+// do {
+//   console.log(`Nuka-Cola ${i}`);
+//   i++;
+// } while (false);
 
+// let myVar = {
+// }
+// if (!myVar) {
+//     console.log('yep');
+//     myVar = 123
+//     myVar.toString()
+// }
+let hasFood = NaN;
+let hasWater = 5;
+let hasMap = true;
 
-while (false) {
-    console.log(`Итерация номер ${i}`);
-    i++
-  }
+// console.log(hasFood && hasWater);
+// console.log(hasFood || hasWater);
+
+// console.log(hasFood ?? hasWater);
+
+const mixedArray = [5, 'hello', true, null];
+let sum2 = mixedArray.push('red')
+// из конца в начало
+// for (let i = mixedArray.length - 1; i >= 0; i--) {
+//     console.log(mixedArray[i]);
+//     }
+// из начала в конец
+// for (let i = 0; i <= mixedArray.length - 1; i++) {
+//     console.log(typeof mixedArray[i] );
+//     if (typeof mixedArray[i] === 'number') {
+//         mixedArray[i] *= 2
+//     }
+//         console.log(mixedArray[i]);
+// }
+// console.log(mixedArray);
+let weaponArr = ['Меч', "Катана", "Световой меч", "нунчаки"]
+
+let firstWeapon = weaponArr[0]
+let newWeapon = 'Палка'
+weaponArr.push(newWeapon)
+// for (let item of weaponArr) {
+//     console.log(item); // Вывод: 1 2 3 4 5
+// }
+for (let letter of weaponArr[1]){
+    console.log(letter);
+}
+
+// 
+// let sum = mixedArray.unshift('color', 'blue')
+// let deletedEl = mixedArray.pop()
+// mixedArray.shift()
+
+// console.log(deletedEl);
+// console.log(mixedArray);
+// console.log(mixedArray[4]);
+// console.log(mixedArray.length);
+// console.log(mixedArray[mixedArray.length - 1]);
