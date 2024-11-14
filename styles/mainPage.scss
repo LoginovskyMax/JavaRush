@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+$darkColor: #28293E;
+
+.wrapper{
+    width: 1440px;
+    margin: 0 auto;
+}
+.button{
+    background-color: inherit;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.409);
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        background-color: white;
+        color: $darkColor;
+    }
+}
+.header{
+    background-color: $darkColor;
+    color: white;
+    padding: 20px 0;
+    &_box{
+       display: flex;
+       justify-content: space-between; 
+       align-items: center;
+    }
+    &_logo{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        &__text{
+            font-weight: bold;
+        }
+    }
+    &_list{
+        display: flex;
+        gap: 150px;
+        list-style-type: none;
+    }
+    &_list-item{
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover{
+        transform: translateY(-2px);
+        font-weight: bold;
+        }
+    }
+}
