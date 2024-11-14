@@ -10,13 +10,38 @@ const car = {
     }
 };
 
-console.log(car.make);
+class CustomError extends Error {
+    constructor(message) {
+    super(message); // Вызываем конструктор
+    this.name = 'CustomError';
+    }
+}
+
+// console.log(car.make);
+let result = null;
+
+try{
+    // result = car
+    // if(!result){
+    //     const myErr = new CustomError('result это не объект а null')
+    //     throw myErr
+    // }
+console.log('da')
+    console.log(result.model.toLowerCase());
+} catch(error){
+    console.error('Произошла ошибка:', error.message);
+    console.log(error.name);
+    // console.log(error.stack);
+} finally {
+    console.log('Результат:', result);
+}
+
+console.log('continue...');
 delete car.owner
 if(car.hasOwnProperty('owner')){
     console.log(car.owner.name);
 }
 
-console.log(car.owner?.name);
 
 function Person(name, age, city) {
     this.name = name;
@@ -44,25 +69,25 @@ let copiedAlice = {...alice}
 // let name = alice.name
 // let age = alice.age
 
-let {name, age : totalAge, salary = 200000, address : { street: mainStreet}} = alice
-function displayObject({name, salary}){
-    console.log(`${name} salary: ${salary}`);
-}
+// let {name, age : totalAge, salary = 200000, address : { street: mainStreet}} = alice
+// function displayObject({name, salary}){
+//     console.log(`${name} salary: ${salary}`);
+// }
 // displayObject(alice)
 // console.log(name);
 // console.log(totalAge);
 // console.log(salary);
 // console.log(mainStreet);
 
-let colors = ['red', 'green', 'blue'];
-let colors2 = ['brown', 'yellow'];
-let [firstEl, , thirdEl, ...restEl] = colors
+// let colors = ['red', 'green', 'blue'];
+// let colors2 = ['brown', 'yellow'];
+// let [firstEl, , thirdEl, ...restEl] = colors
 
-let copiedColors = [...colors,...colors2 ]
+// let copiedColors = [...colors,...colors2 ]
 
-copiedColors.push(1)
-console.log(colors);
-console.log(copiedColors);
+// copiedColors.push(1)
+// console.log(colors);
+// console.log(copiedColors);
 // console.log(firstEl);
 // console.log(thirdEl);
 // console.log(restEl);
