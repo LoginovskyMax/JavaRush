@@ -1,3 +1,5 @@
+@import  './shared/header';
+
 *{
     padding: 0;
     margin: 0;
@@ -12,6 +14,9 @@ $lightColor: #FDF0E9;
 .wrapper{
     width: 1440px;
     margin: 0 auto;
+    @media (max-width:1440px) {
+        width: 100%;
+    }
 }
 .orange-text{
     color: $orangeColor;
@@ -21,11 +26,17 @@ $lightColor: #FDF0E9;
     color: white;
     font-weight: 800;
     font-size: 60px;
+    @media (max-width:500px) {
+        font-size: 30px;
+    }
 }
 .dark{
     color: black;
     width: 470px;
     text-align: center;
+    @media (max-width:500px) {
+        width: 90%;
+    }
 }
 .button{
     background-color: inherit;
@@ -45,37 +56,7 @@ $lightColor: #FDF0E9;
   @extend .button;
   background-color: $orangeColor;
 }
-.header{
-    background-color: $darkColor;
-    color: white;
-    padding: 20px 0;
-    &_box{
-       display: flex;
-       justify-content: space-between; 
-       align-items: center;
-    }
-    &_logo{
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        &__text{
-            font-weight: bold;
-        }
-    }
-    &_list{
-        display: flex;
-        gap: 150px;
-        list-style-type: none;
-    }
-    &_list-item{
-        cursor: pointer;
-        transition: 0.4s;
-        &:hover{
-        transform: translateY(-2px);
-        font-weight: bold;
-        }
-    }
-}
+
 .about{
     background-color: $darkColor;
     color: white;
@@ -84,6 +65,11 @@ $lightColor: #FDF0E9;
         align-items: center;
         justify-content: space-between;
         padding: 90px 0;
+        box-sizing: border-box;
+        @media (max-width:500px) {
+            flex-direction: column-reverse;
+            padding: 10px;
+        }
     }
     &_text{
         display: flex;
@@ -92,6 +78,14 @@ $lightColor: #FDF0E9;
         gap: 35px;
         &__item{
             width: 460px;
+            @media (max-width:500px) {
+                width: 90%;
+            }
+        }
+    }
+    &_img{
+        @media (max-width:500px) {
+            width: 90%;
         }
     }
 }
@@ -103,10 +97,17 @@ $lightColor: #FDF0E9;
         flex-direction: column;
         align-items: center;
         gap: 35px;
+        box-sizing: border-box;
+        @media (max-width:500px) {
+            padding: 10px;
+        }
     }
     &_cards{
         display: flex;
         width: 100%;
+        @media (max-width:500px) {
+            flex-direction: column;
+        }
     }
 }
 
@@ -118,6 +119,9 @@ $lightColor: #FDF0E9;
     gap: 20px;
     width: 50%;
     box-sizing: border-box;
+    @media (max-width:500px) {
+        width: 100%;
+    }
     &_box{
         display: flex;
         align-items: center;
@@ -139,6 +143,9 @@ $lightColor: #FDF0E9;
         color: #391400;
         width: 490px;
         line-height: 32px;
+        @media (max-width:500px) {
+            width: 90%;
+        }
     }
     &_btn{
         background-color: white;

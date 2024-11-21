@@ -1,0 +1,57 @@
+$darkColor: #28293E;
+$orangeColor: #EF6D58;
+$lightColor: #FDF0E9;
+
+.header{
+    background-color: $darkColor;
+    color: white;
+    padding: 20px 0;
+    &_box{
+       display: flex;
+       justify-content: space-between; 
+       align-items: center;
+       box-sizing: border-box;
+       @media (max-width:500px) {
+       padding: 10px;
+    }
+    }
+    &_logo{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        &__text{
+            font-weight: bold;
+        }
+    }
+    &_list{
+        display: flex;
+        gap: 150px;
+        list-style-type: none;
+        @media (max-width:500px) {
+            display:none;
+        }
+    }
+    &_list-item{
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover{
+        transform: translateY(-2px);
+        font-weight: bold;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+    &_btn{
+        @media (max-width:500px) {
+            display: none;
+        }
+    }
+    &_menu{
+        display: none;
+        @media (max-width:500px) {
+            display: block;
+        }
+    }
+}
