@@ -55,9 +55,16 @@ class Venicle {
     constructor(wheels) {
         this.wheels = wheels
     }
+    static identify() {
+        return 'This is an Venicle';
+        }
+    #getPrivate(){
+        return 'private'
+    }
     getWheels(){
        console.log('У этого т.с ' + this.wheels + ' колес');
     }
+
 }
 class Auto extends Venicle {
     constructor(wheels, hasBeep) {
@@ -80,6 +87,7 @@ class Car extends Auto  {
         this.age = age
         this.power = power
         this.type = 'auto'
+        this.price = 3000
     }
     #changeMetall(metall){
        this.#metall = metall
@@ -92,14 +100,38 @@ class Car extends Auto  {
         const dinamic = weight / this.power
         console.log('Мощность на килограмм ' + dinamic);
    }
+   static identify() {
+    return 'This is an Car';
+    }
 }
+
+let sayBeepMixin = {
+    sayHi(){
+        console.log('Hi from mixin');
+    }
+}
+Object.assign(Car.prototype, sayBeepMixin)
+
+function canSell(obj) {
+    obj.sell = function() {
+    console.log(`${this.name} sold for $${this.price}`);
+    };
+}
+
 let mers = new Car(true, 4,'Mers', 1992, 200 )
+canSell(mers)
+mers.sell()
 mers.name = 'Audi'
+mers.sayHi()
 mers.getName()
 mers.getDinamic(1500)
 mers.getWheels()
 mers.sayBeep()
+console.log(Venicle.identify());
+console.log(Car.identify());
 console.log(mers);
+
+console.log(Date.now());
 
 let audi = new CreateCar(1992, 'Audi')
 
