@@ -10,10 +10,18 @@
     <header class="header">
     </header>
     <main class="main">
+        <script src="https://cdn.jsdelivr.net/npm/idb@3.0.2/build/idb.min.js"></script>
 
+        <button onclick="addBook()">Добавить книгу</button>
+        <button onclick="clearBooks()">Очистить хранилище</button>
+        
+        <p>Список книг:</p>
+        
+        <ul id="listElem"></ul>
     </main>
     <footer class="footer">
     </footer>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/idb.js"></script>
 </body>
 </html>
