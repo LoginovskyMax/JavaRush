@@ -1,0 +1,32 @@
+.pass {
+  border: 1px solid black;
+  padding: 20px;
+  width: 20%;
+  position: relative;
+  box-sizing: border-box;
+}
+.pass_label {
+  color: gray;
+  font-style: oblique;
+}
+.pass:hover {
+  cursor: pointer;
+  background-color: rgba(127, 255, 212, 0.555);
+}
+.pass_select {
+  border: 1px solid black;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(127, 255, 212, 0.555);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
