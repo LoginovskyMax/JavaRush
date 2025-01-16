@@ -1,0 +1,9 @@
+{
+    "city": [
+      { "id": "1", "name": "Almaty", "rating": 5 },
+      { "id": "2", "name": "Karagaanda", "rating": 4 },
+      { "id": 3, "name": "New-York", "rating": 4.6 },
+      { "id": 4, "name": "Paris", "rating": 4.1 },
+      { "id": 5, "name": "Tokio", "rating": 4.9 }
+    ]
+}

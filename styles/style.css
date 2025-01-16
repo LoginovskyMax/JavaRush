@@ -1,0 +1,43 @@
+.list {
+  width: 200px;
+}
+.list_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.list_img-box {
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.234);
+  justify-content: center;
+  align-items: center;
+}
+.modal_content {
+  width: 500px;
+  border-radius: 20px;
+  background-color: blueviolet;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
