@@ -1,0 +1,42 @@
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    &_btns{
+        display: flex;
+        gap: 20px;
+    }
+    &_btn{
+        background-color: violet;
+        border-radius: 8px;
+        padding: 5px 20px;
+        width: 200px;
+        font-size: 20px;
+    }
+    &_pages{
+        display: flex;
+        gap: 10px;
+    }
+}
+
+.card{
+    width: calc(25% - 15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border: 1px black solid;
+    border-radius: 20px;
+    background-color: bisque;
+    box-sizing: border-box;
+}

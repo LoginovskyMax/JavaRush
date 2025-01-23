@@ -8,9 +8,25 @@
 </head>
 <body>
     <header class="header">
+        <h1>Rick and Morty</h1>
+        <div class="header_btns">
+            <button type="button" class="header_btn" id="prev">Previos</button>
+            <button type="button" class="header_btn" id="next">Next</button>
+            <!-- <button type="button" class="header_btn" id="filter">Filter</button> -->
+            <select name="" id="filter">
+                <option value="name=rick">rick</option>
+                <option value="status=alive">alive</option>
+                <option value=""></option>
+            </select>
+
+        </div>
+        <div class="header_pages">
+            <span>Current page </span><span id="currentPage">1</span>
+            <span>Total pages </span><span id="totalPage"></span>
+        </div>
     </header>
     <main class="main">
-
+       
     </main>
     <footer class="footer">
     </footer>
