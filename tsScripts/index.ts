@@ -1,106 +1,104 @@
+function getFirstEl<G>(arr: G[], arg:G):void{
+  console.log( arr.push(arg));
+}
+getFirstEl([1,2,3], 3)
+getFirstEl(['2','4'], 'sfsf')
+getFirstEl([1, '4'], 66)
 
-interface Employee {
-    name: string,
-    salary: number,
-    email?: string
+type ApiResponse<T> = {
+  success: boolean;
+  data: T;
+  timestamp: number;
 }
-interface User extends Employee {
-    age: number
+interface User {
+  id:number,
+  name: string,
+  age: number
 }
-
-const user:User = {
-    name: 'Alice',
-    age: 25,
-    salary: 25000,
-}
-user.email = '@sds'
-
-interface MyDog {
-    name: string,
-    bark(a:string):void
+interface Cart {
+  id:number,
+  title: string,
+  price: number
 }
 
-interface MyDogObj {
-    adress: string,
-    age: number
+
+function getData <T>(url:string){
+  fetch(url)
+  .then(response => response.json())
+  .then((data:ApiResponse<T[]>) => console.log(data))
 }
-interface Animal {
-    run():void
-}
-class Dog implements MyDog, Animal {
-  public name:string
-  obj: MyDogObj
-  constructor(obj:MyDogObj, name: string){
-    this.name = name
-    this.obj = obj
+
+getData<User>('ddg')
+getData<Cart>('ddg')
+
+class DataContainer<T> {
+  private data: T;
+  constructor(initialData: T) {
+  this.data = initialData;
   }
-  bark(a:string):void{
-    console.log(a);
+  getData(): T {
+  return this.data;
   }
-  run():void{
-    console.log('I can run');
+  setData(newData: T): void {
+  this.data = newData;
   }
-  bark2(a:string):void{
-    console.log(a);
+  }
+
+const data = new DataContainer('2442')
+data.setData("34535")
+
+class ArrayUtils {
+  // Метод для преобразования элементов массива
+  transform<T, U>(array: T[], transformer: (item: T) => U): U[] {
+      return array.map(transformer);
+  }
+  // Метод для фильтрации с сохранением типа
+  static filter<T>(array: T[], predicate: (item: T) => boolean): T[] {
+      return array.filter(predicate);
   }
 }
 
-const obj:MyDogObj ={
-    adress: 'Almaty', 
-    age: 5
+function transformNumbers(item:number) {
+   return item.toString()
 }
 
-const newDog = new Dog(obj, 'Barbos')
+const newInstance = new ArrayUtils()
+const newArr = newInstance.transform<number, string>([1,2,3,4], transformNumbers)
+console.log(newArr);
 
-class BankAccount {
-    public accountNumber: string;
-    private balance: number;
-    constructor(accountNumber: string, balance: number) {
-    this.accountNumber = accountNumber;
-    this.balance = balance;
-    }
-    public getBalance(): number {
-    return this.balance;
-    }
-    protected setBalance(newBalance: number): void {
-    this.balance = newBalance;
-    }
-   showLog(num:number):number{
-    return num*2
-   }
+newArr.map((item) => +item *2)
+
+type Gen  = string | number | number[]
+
+function doubleValue<T extends Gen>(value: T): Gen {
+  return value;
 }
-class Bank extends BankAccount{
-    constructor(accountNumber: string, balance: number){
-        super(accountNumber, balance)
-    }
-
-    showLog(newBalance: number): number {
-        console.log( newBalance);
-        return newBalance
-    }
-
+function doubleValueCop(value: Gen): Gen {
+  return value;
 }
+doubleValue([2,4,5,])
 
-abstract class Figure{
-    abstract width: number
-    abstract height: number
-    abstract getSquare(): number
+interface HasName {
+   name: string;
 }
+  // Функция с ограничением интерфейсом
+function printName<T extends HasName>(item: T): void {
+  console.log(`Name: ${item.name}`);
+  }
+  interface SomeInterface {
+    name:string
+  }
+function printNameCopy(item: SomeInterface): void {
+    console.log(`Name: ${item.name}`);
+    }
+  const person = {
+      name: "John",
+      age: 25
+      };
+  const animal = {
+      name: "Rex",
+      type: "dog"
+      };
+ printName(person)
 
-
-class Rectangle extends Figure{
-    width: number
-    height: number
-    constructor(width:number, height:number){
-      super()
-      this.width = width
-      this.height = height
-    }
-    getSquare(): number {
-        return this.width * this.height
-    }
-    getPerimetr():number{
-      return (this.width + this.height)*2
-    }
-}
-const myFigure = new Rectangle(5, 5)
+ printNameCopy(person)
