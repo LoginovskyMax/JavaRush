@@ -66,3 +66,51 @@ const animal = {
 };
 printName(person);
 printNameCopy(person);
+const model = 'power';
+const theme = 'light';
+function updateField(obj, key, value) {
+    //  obj[key] = value;
+    //  return obj
+    return Object.assign(Object.assign({}, obj), { [key]: value });
+}
+let auto = {
+    model: 'Mers',
+    power: 200,
+    maxSpeed: 250,
+    config: {
+        theme: 'dark',
+        size: 'lg'
+    }
+};
+const upgadedAuto = updateField(auto, 'power', 300);
+upgadedAuto.power;
+const copyCar = Object.assign({}, auto);
+const copyCar2 = Object.assign({}, auto);
+const copyCar3 = structuredClone(auto);
+const copyCar4 = JSON.parse(JSON.stringify(auto));
+console.log('parentOnj', auto);
+copyCar3.maxSpeed = 10;
+copyCar3.config.size = 'sm';
+console.log('copyOnj', copyCar3);
+const user = {};
+// Создание формы редактирования пользователя
+const newUser = {
+    id: 1,
+    age: 22,
+    city: 'string'
+};
+function checkArg(arg) {
+    if (typeof arg === 'string') {
+        console.log('strinng');
+        return;
+    }
+    if (Array.isArray(arg)) {
+        console.log('arrr');
+        arg.map(item => item * 2);
+        return;
+    }
+    alert('Неверные данные фронт не виноват');
+}
+checkArg('dfdf');
+checkArg([4]);
+checkArg(undefined);

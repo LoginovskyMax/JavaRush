@@ -102,3 +102,119 @@ function printNameCopy(item: SomeInterface): void {
  printName(person)
 
  printNameCopy(person)
+
+
+ type CarKeys = keyof Car
+
+ const model:CarKeys = 'power'
+
+ type Colors = 'white' | 'black' | 'blue'
+
+ interface Car {
+  model: string,
+  power: number,
+  maxSpeed: number
+  config: Config
+ }
+ interface Config {
+  theme: 'light' | 'dark';
+  size: 'sm' | 'md' | 'lg';
+ }
+
+ interface ComponentProps {
+     id: number;
+     config: Config
+     data: string[];
+  }
+  type congigTheme = ComponentProps['config']['theme']
+  const theme:congigTheme = 'light'
+
+  interface UserAlice {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+  }
+    // Создаем утилиту для получения типа значения по ключу
+  type ValueType<T, K extends keyof T> = T[K];
+
+  function updateField<T extends object, K extends keyof T>(
+    obj: T,
+    key: K,
+    value: T[K]
+    ): T {
+    //  obj[key] = value;
+    //  return obj
+     return {...obj, [key]: value}
+  }
+
+  let auto:Car = {
+   model: 'Mers',
+   power: 200,
+   maxSpeed: 250,
+   config: {
+    theme: 'dark',
+    size: 'lg'
+   }
+  }
+  const upgadedAuto = updateField(auto, 'power', 300 )
+  upgadedAuto.power
+  
+  const copyCar = {...auto}
+ 
+  const copyCar2 = Object.assign({}, auto)
+
+  const copyCar3 = structuredClone(auto)
+
+  const copyCar4 = JSON.parse(JSON.stringify(auto))
+
+  console.log('parentOnj',auto);
+  copyCar3.maxSpeed = 10
+  copyCar3.config.size = 'sm'
+  console.log('copyOnj',copyCar3);
+
+  interface User {
+    id: number;
+    name: string;
+    email: string;
+    age: number;
+    city: string
+  }
+  const user:User = {\
+
+  }
+
+  type UserEditForm = Partial<User>;
+// Выбор только контактных данных
+  type UserContacts = Pick<User, 'email' | 'name'>;
+// Создание словаря пользователей
+   type UsersDict = Record<string, User>;
+
+   type UsersDict2 = Omit<User, 'email' | 'name' >;
+    // Создание формы редактирования пользователя
+
+const newUser:UsersDict2={
+  id: 1,
+  age: 22,
+  city: 'string'
+}
+
+function checkArg(arg:string| undefined | Array<number>): void {
+   if( typeof arg === 'string' ) {
+     console.log('strinng');
+     return
+   }
+   if (Array.isArray(arg)) {
+    console.log('arrr');
+    arg.map(item => item*2)
+    return
+   }
+   alert('Неверные данные фронт не виноват')
+
+}
+checkArg('dfdf')
+checkArg([4])
+checkArg(undefined)
+
+
+
