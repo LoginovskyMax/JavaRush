@@ -1,51 +1,33 @@
 import reactLogo from '../assets/react.svg'
 import { useEffect, useState } from 'react'
+import  useFetch  from '../hooks/useFetch'
 
 import './style.scss'
+import useCounter from '../hooks/useCounter'
 
 interface Props {
     name: string
 }
 
 function Avatar({name}:Props) {
-    const [likeCount, setLikeCount] = useState<number>(0)
-
-     const [character, setCharacter] = useState({
-       name: 'Alice',
-       age: 25
-     })
-
-    const increment = () => {
-       setLikeCount(likeCount + 1); // Простое обновление
-    };
-
-  const decrement = () => {
-       setLikeCount(prevCount => prevCount - 1);
-    };
-  
-  useEffect(() => {
-      console.log('Count changed');
-  }, [likeCount])
+  const {count, increment, decrement} = useCounter()
+  const {data, isLoading, getData } = useFetch()
 
   return (
     <div className='avatar'>
+      
       <img src={reactLogo} className="logo react" alt="React logo" />
-      <p>Имя: {name}</p>
-    
-        <button onClick={increment} >
-          Лайк :  {likeCount   }
-        </button>
-
-        <button onClick={() => decrement()}>
-          ДизЛайк
-        </button>
-
-        <button onClick={() => setCharacter(prev => ({...prev, age: prev.age +1}))}>
-          Увеличить возраст персонажа
-        </button>
-
-        <p>{character.name}</p>
-        <p>{character.age}</p>
+      {isLoading && <p>Loading...</p>}
+      {data.name && <div>
+         <p>{data.name}</p>
+         <img src={data.image} alt="img" />
+        </div>}
+      <button onClick={() => getData(count)}>Получить пользователя</button>
+      
+        <p>{name}</p>
+        <p>{count}</p>
+       <button onClick={increment}>+</button>
+       <button onClick={decrement}>-</button>
     </div>
   
   )

@@ -4,6 +4,7 @@ import { createContext, useState } from 'react'
 import Block from './components/Block'
 import Avatar from './components/Avatar'
 import RerenderTest from './components/RerenderTest'
+import authUser from './HOC/authUser'
 
 
 type Theme = 'light' | 'dark'
@@ -21,19 +22,23 @@ function App() {
   const changeTheme = () => {
     setTheme( currentTheme => currentTheme === 'light' ? 'dark' : 'light' )
   }
-  const userName = 'Alice'
+  const userName = 'Avatar'
 
+  const AuthComponent = authUser(Block)
 
   return (
     <>
-     <ThemeContext.Provider value={{theme, changeTheme}}>
+     {/* <ThemeContext.Provider value={{theme, changeTheme}}>
          <Block name={userName}/>
-     </ThemeContext.Provider>
+     </ThemeContext.Provider> */}
      <Avatar name={userName}/>
+     <AuthComponent name='Alice'/>
 
-      <div className="card">
+
+
+      {/* <div className="card">
         <RerenderTest />
-      </div>
+      </div> */}
     </>
   )
 }
