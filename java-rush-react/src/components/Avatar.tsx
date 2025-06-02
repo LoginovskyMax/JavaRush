@@ -1,9 +1,10 @@
 import reactLogo from '../assets/react.svg'
-import { useEffect, useState } from 'react'
 import  useFetch  from '../hooks/useFetch'
 
 import './style.scss'
 import useCounter from '../hooks/useCounter'
+import { useEffect } from 'react'
+import Cart from './Cart'
 
 interface Props {
     name: string
@@ -13,16 +14,25 @@ function Avatar({name}:Props) {
   const {count, increment, decrement} = useCounter()
   const {data, isLoading, getData } = useFetch()
 
+ useEffect(() => {
+     getData(count)
+ }, [])
+
   return (
     <div className='avatar'>
       
       <img src={reactLogo} className="logo react" alt="React logo" />
+      {/* {isLoading ? <p>sdgdf</p> : <p>777</p>} */}
       {isLoading && <p>Loading...</p>}
-      {data.name && <div>
-         <p>{data.name}</p>
-         <img src={data.image} alt="img" />
-        </div>}
-      <button onClick={() => getData(count)}>Получить пользователя</button>
+      {data.length && data.map((character, index) => {
+        return (
+          <>
+          <p>number in arr : {index}</p>
+          <Cart key={character.name} character={character} />
+          </>
+        )
+      })}
+
       
         <p>{name}</p>
         <p>{count}</p>

@@ -9,13 +9,6 @@ interface Props {
     }
 }
 
-// const checkProps = (prevProps:Props, nextProps:Props) => {
-//    if(nextProps.counter > 10) {
-//     return true
-//    }
-//    return false
-// }
-
 const ChildTest:FC<Props> = ({counter, show, user}) => {
    console.log('render child');
    
