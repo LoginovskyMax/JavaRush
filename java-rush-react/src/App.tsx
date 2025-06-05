@@ -6,6 +6,8 @@ import Avatar from './components/Avatar'
 // import RerenderTest from './components/RerenderTest'
 import authUser from './HOC/authUser'
 import ChildrenComp from './components/childrenComp'
+import UncontrolledForm from './components/UncontrolledForm'
+import FormikComp from './components/FormikComp'
 
 
 type Theme = 'light' | 'dark'
@@ -27,6 +29,7 @@ function App() {
   const [theme, setTheme] = useState<Theme>('light')
   const [mouseEntered, setMouseEntered] = useState(false)
   const [inpValue, setInpValue] = useState('light')
+  const [error, setError] = useState(false)
 
   const changeTheme = () => {
     setTheme( currentTheme => currentTheme === 'light' ? 'dark' : 'light' )
@@ -52,13 +55,22 @@ function App() {
   }
 
   const onChangeFunc = (e:React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    setInpValue(e.target.value)
+    console.log(e.target.value.length);
+    if(e.target.value.length < 10) {
+       setInpValue(e.target.value)
+       setError(false)
+       return 
+    }
+
+    setError(true)
   }
 
   return (
     <>
+    <FormikComp />
+    <UncontrolledForm />
      <div onMouseEnter={() => setMouseEntered(true)} onMouseLeave={() => setMouseEntered(false)} 
+
      className={
        mouseEntered ? myClass : ''
      }
@@ -68,6 +80,7 @@ function App() {
      </div>
 
      <input type="text" placeholder='your text here' value={inpValue} onChange={onChangeFunc}  />
+     {error && <p>Имя не может превышать 10 симоволов</p>}
      <p>Значение инпута: {inpValue}</p>
 
      <ThemeContext.Provider value={{theme, changeTheme}}>
