@@ -8,6 +8,8 @@ import authUser from './HOC/authUser'
 import ChildrenComp from './components/childrenComp'
 import UncontrolledForm from './components/UncontrolledForm'
 import FormikComp from './components/FormikComp'
+import StoreCounter from './components/StoreCounter'
+import { useAppSelector } from './store/hooks'
 
 
 type Theme = 'light' | 'dark'
@@ -23,9 +25,9 @@ const arr = [
 
 export const ThemeContext = createContext<IThemeContext | null>(null)
 
-const AGE_FULL = 18
 
 function App() {
+   const { count, age } = useAppSelector((state) => state.counter)
   const [theme, setTheme] = useState<Theme>('light')
   const [mouseEntered, setMouseEntered] = useState(false)
   const [inpValue, setInpValue] = useState('light')
@@ -67,6 +69,9 @@ function App() {
 
   return (
     <>
+    <StoreCounter/>
+    <p>Глобальный стейт коунтре = {count}</p>
+    <p>Глобальный Возраст {age}</p>
     <FormikComp />
     <UncontrolledForm />
      <div onMouseEnter={() => setMouseEntered(true)} onMouseLeave={() => setMouseEntered(false)} 
@@ -82,10 +87,11 @@ function App() {
      <input type="text" placeholder='your text here' value={inpValue} onChange={onChangeFunc}  />
      {error && <p>Имя не может превышать 10 симоволов</p>}
      <p>Значение инпута: {inpValue}</p>
-
+     
      <ThemeContext.Provider value={{theme, changeTheme}}>
          <Block name={userName}/>
      </ThemeContext.Provider>
+
     <button onClick={changeNumber}>Изменить number {someNumber.current}</button>
     <button ref={block} onClick={() => console.log(someNumber.current)}>show number</button>
      {arr.map(obj => <p key={obj.name}>Name: {obj.name}</p>)}
