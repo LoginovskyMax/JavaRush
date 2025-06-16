@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterSlice from "./slices/counterSlice";
+import characterslice from "./slices/charactersSlise";
 
 export const store = configureStore({
     reducer: {
-        counter: counterSlice
+        counter: counterSlice,
+        characters: characterslice
     }
 })
 

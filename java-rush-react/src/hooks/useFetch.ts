@@ -4,7 +4,7 @@ const useFetch = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [data, setdata] = useState<[{image:'', name: ''}] | []>([])
 
-    const getData = async (id: number) => {
+    const getData = async () => {
        setIsLoading(true)
        const response = await fetch(`https://rickandmortyapi.com/api/character`)
        const dataResp = await response.json()

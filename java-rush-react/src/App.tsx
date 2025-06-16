@@ -10,6 +10,8 @@ import UncontrolledForm from './components/UncontrolledForm'
 import FormikComp from './components/FormikComp'
 import StoreCounter from './components/StoreCounter'
 import { useAppSelector } from './store/hooks'
+import CharactersLayout from './components/CharactersLayout'
+import Pagination from './components/Pagination'
 
 
 type Theme = 'light' | 'dark'
@@ -69,51 +71,12 @@ function App() {
 
   return (
     <>
-    <StoreCounter/>
-    <p>Глобальный стейт коунтре = {count}</p>
-    <p>Глобальный Возраст {age}</p>
-    <FormikComp />
-    <UncontrolledForm />
-     <div onMouseEnter={() => setMouseEntered(true)} onMouseLeave={() => setMouseEntered(false)} 
-
-     className={
-       mouseEntered ? myClass : ''
-     }
-     style={{color: mouseEntered ?  color : 'green'}}
-     >
-      randomm text
-     </div>
-
-     <input type="text" placeholder='your text here' value={inpValue} onChange={onChangeFunc}  />
-     {error && <p>Имя не может превышать 10 симоволов</p>}
-     <p>Значение инпута: {inpValue}</p>
-     
-     <ThemeContext.Provider value={{theme, changeTheme}}>
-         <Block name={userName}/>
-     </ThemeContext.Provider>
-
-    <button onClick={changeNumber}>Изменить number {someNumber.current}</button>
-    <button ref={block} onClick={() => console.log(someNumber.current)}>show number</button>
-     {arr.map(obj => <p key={obj.name}>Name: {obj.name}</p>)}
-     <Avatar name={userName}/>
-     <AuthComponent name='Alice'/>
-     <ChildrenComp render={
-      (text, counter) => {
-        return (
-          <div>
-            <p>{text}</p>
-            <p>Счетчик: {counter}</p>
-            <p>Some text from parent</p>
-          </div>
-        )
-      }
-     }/>
-
-
-
-      {/* <div className="card">
-        <RerenderTest />
-      </div> */}
+    <CharactersLayout />
+    <Pagination />
+    {/* <StoreCounter/> */}
+    {/* <FormikComp /> */}
+    {/* <UncontrolledForm /> */}
+  
     </>
   )
 }
