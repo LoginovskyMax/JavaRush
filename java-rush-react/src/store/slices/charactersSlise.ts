@@ -16,7 +16,7 @@ const initialState:ICharactersState = {
 
 export const fetchCharacters = createAsyncThunk(
     'fetchCharacters',
-    async (pageNumber: number | undefined = 1) => {
+    async (pageNumber: number | undefined = 1, thunkAPI) => {
        const response = await fetch(`https://rickandmortyapi.com/api/character?page=${pageNumber}`)
        const dataResp = await response.json()
        await new Promise((res)=>{

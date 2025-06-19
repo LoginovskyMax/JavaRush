@@ -12,6 +12,8 @@ import StoreCounter from './components/StoreCounter'
 import { useAppSelector } from './store/hooks'
 import CharactersLayout from './components/CharactersLayout'
 import Pagination from './components/Pagination'
+import Query from './components/Query'
+import { useGetPokemonQuery } from './store/slices/apiSlice'
 
 
 type Theme = 'light' | 'dark'
@@ -69,8 +71,12 @@ function App() {
     setError(true)
   }
 
+    const {data: pokemonData, isError, isLoading, refetch} = useGetPokemonQuery('pikachu')
+
   return (
     <>
+    {!isLoading && <p>{pokemonData}</p>}
+    <Query />
     <CharactersLayout />
     <Pagination />
     {/* <StoreCounter/> */}
