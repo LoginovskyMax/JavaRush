@@ -14,6 +14,8 @@ import CharactersLayout from './components/CharactersLayout'
 import Pagination from './components/Pagination'
 import Query from './components/Query'
 import { useGetPokemonQuery } from './store/slices/apiSlice'
+import { Routes, Route, Link } from 'react-router-dom';
+import CharacterPage from './pages/CharacterPage'
 
 
 type Theme = 'light' | 'dark'
@@ -71,14 +73,25 @@ function App() {
     setError(true)
   }
 
-    const {data: pokemonData, isError, isLoading, refetch} = useGetPokemonQuery('pikachu')
-
   return (
     <>
-    {!isLoading && <p>{pokemonData}</p>}
-    <Query />
-    <CharactersLayout />
-    <Pagination />
+    {/* {!isLoading && <p>{pokemonData}</p>} */}
+    <Link to="/">Главная</Link> | 
+    <Link to="/rick">Рик и Морти</Link> | 
+    <Link to="/rick/others">Другое</Link> |
+    <Link to="/rick/form">Форма</Link>
+    
+    <Routes>
+      <Route path="/" element={ <Query />}/>
+      <Route path="/rick" element={<CharactersLayout />}>
+         <Route path="form" element={ <FormikComp />}/>
+         <Route path="others" element={ <StoreCounter />}/>
+      </Route>
+      <Route path="/rick/character/:id" element={ <CharacterPage />}/>
+    </Routes>
+
+
+    {/* <Pagination /> */}
     {/* <StoreCounter/> */}
     {/* <FormikComp /> */}
     {/* <UncontrolledForm /> */}

@@ -5,6 +5,8 @@ import { fetchCharacters } from '../store/slices/charactersSlise'
 import { useEffect } from 'react'
 import Character from './Charcter'
 import Loader from './loader'
+import Pagination from './Pagination'
+import { Outlet } from 'react-router-dom'
 
 
 function CharactersLayout() {
@@ -13,14 +15,21 @@ function CharactersLayout() {
 
 
  useEffect(() => {
+  if(!characters.length) {
     dispatch(fetchCharacters())
+  }
  }, [])
 
   return (
+    <div>
+    <Outlet />
     <div className='layuot'>
         {isLoading && <Loader />}
         {characters.length && characters.map(item => <Character key={item.id} character={item} />)}
     </div>
+    <Pagination />
+    </div>
+
   )
 }
 
