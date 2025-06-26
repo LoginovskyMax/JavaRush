@@ -1,6 +1,6 @@
 
 import './App.css'
-import { createContext, useRef, useState } from 'react'
+import { createContext, lazy, Suspense, useRef, useState } from 'react'
 import Block from './components/Block'
 import Avatar from './components/Avatar'
 // import RerenderTest from './components/RerenderTest'
@@ -10,12 +10,14 @@ import UncontrolledForm from './components/UncontrolledForm'
 import FormikComp from './components/FormikComp'
 import StoreCounter from './components/StoreCounter'
 import { useAppSelector } from './store/hooks'
-import CharactersLayout from './components/CharactersLayout'
+// import CharactersLayout from './components/CharactersLayout'
+const CharactersLayout = lazy(() => import('./components/CharactersLayout'))
 import Pagination from './components/Pagination'
 import Query from './components/Query'
 import { useGetPokemonQuery } from './store/slices/apiSlice'
 import { Routes, Route, Link } from 'react-router-dom';
 import CharacterPage from './pages/CharacterPage'
+import ApolloPage from './components/ApolloPage'
 
 
 type Theme = 'light' | 'dark'
@@ -79,8 +81,10 @@ function App() {
     <Link to="/">Главная</Link> | 
     <Link to="/rick">Рик и Морти</Link> | 
     <Link to="/rick/others">Другое</Link> |
-    <Link to="/rick/form">Форма</Link>
+    <Link to="/rick/form">Форма</Link> |
+    <Link to="/apollo">Apollo</Link>
     
+    <Suspense fallback={<p>ЗАгрузка......</p>}>
     <Routes>
       <Route path="/" element={ <Query />}/>
       <Route path="/rick" element={<CharactersLayout />}>
@@ -88,8 +92,9 @@ function App() {
          <Route path="others" element={ <StoreCounter />}/>
       </Route>
       <Route path="/rick/character/:id" element={ <CharacterPage />}/>
+      <Route path="/apollo" element={ <ApolloPage />}/>
     </Routes>
-
+    </Suspense>
 
     {/* <Pagination /> */}
     {/* <StoreCounter/> */}

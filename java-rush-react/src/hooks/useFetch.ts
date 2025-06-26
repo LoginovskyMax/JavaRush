@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+
 const useFetch = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [data, setdata] = useState<[{image:'', name: ''}] | []>([])
