@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import axiosInstance from '../api/axios'
 interface iUser{
   id: string
   name: string
@@ -11,11 +12,12 @@ interface iData {
 }
 
 export default async function about() {
-    const response = await fetch(`https://rickandmortyapi.com/api/character`)
-      
-    const data:iData = await response.json()
-    console.log(data);
+    // const response = await fetch(`https://rickandmortyapi.com/api/character`)
+    // const data:iData = await response.json()
+    const axiosResp = await axiosInstance.get('character')
 
+    console.log(axiosResp.data);
+    const data:iData = axiosResp.data
   return (
     <section>
         Страница эбаут
