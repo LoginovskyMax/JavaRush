@@ -78,17 +78,20 @@ function App() {
   return (
     <>
     {/* {!isLoading && <p>{pokemonData}</p>} */}
-    <Link to="/">Главная</Link> | 
+    <header className='header'>
+   <Link to="/">Главная</Link> | 
     <Link to="/rick">Рик и Морти</Link> | 
     <Link to="/rick/others">Другое</Link> |
-    <Link to="/rick/form">Форма</Link> |
+    <Link to="/form">Форма</Link> |
     <Link to="/apollo">Apollo</Link>
+    </header>
+ 
     
     <Suspense fallback={<p>ЗАгрузка......</p>}>
     <Routes>
       <Route path="/" element={ <Query />}/>
+      <Route path="/form" element={ <FormikComp />}/>
       <Route path="/rick" element={<CharactersLayout />}>
-         <Route path="form" element={ <FormikComp />}/>
          <Route path="others" element={ <StoreCounter />}/>
       </Route>
       <Route path="/rick/character/:id" element={ <CharacterPage />}/>
