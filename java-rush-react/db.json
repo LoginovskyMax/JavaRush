@@ -1,0 +1,86 @@
+{
+  "city": [
+    { "id": "1", "name": "Karaganda", "alias": "KRG" },
+    { "id": "2", "name": "Astana", "alias": "AST" },
+    { "id": "3", "name": "New-York", "alias": "NYW" }
+  ],
+  "tickets": [
+    { 
+    "id": "153464734", 
+    "transportCompany": "Express", 
+    "schedule": "1",
+    "totalTiem": "8",
+    "ETA": {
+      "day": "24 november",
+      "time": "11:40",
+      "station": "Astana"
+    },
+    "ETD": {
+      "day": "25 november",
+      "time": "12:00",
+      "station": "Karaganda"
+    },
+    "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+    ]
+  },
+      { 
+    "id": "153464734", 
+    "transportCompany": "Express", 
+    "schedule": "1",
+    "totalTiem": "8",
+    "ETA": {
+      "day": "24 november",
+      "time": "11:40",
+      "station": "Astana"
+    },
+    "ETD": {
+      "day": "25 november",
+      "time": "12:00",
+      "station": "Karaganda"
+    },
+    "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+    ]
+  },
+      { 
+    "id": "153464734", 
+    "transportCompany": "Express", 
+    "schedule": "1",
+    "totalTiem": "8",
+    "ETA": {
+      "day": "24 november",
+      "time": "11:40",
+      "station": "Astana"
+    },
+    "ETD": {
+      "day": "25 november",
+      "time": "12:00",
+      "station": "Karaganda"
+    },
+    "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+    ]
+  }
+  ],
+  "food": [
+    {
+      "id": 1,
+      "title": "Pizza",
+      "price": 20,
+      "image": "vite.svg"
+    },
+      {
+      "id": 2,
+      "title": "Doner",
+      "price": 30,
+      "image": "vite.svg"
+    }
+  ]
+}
