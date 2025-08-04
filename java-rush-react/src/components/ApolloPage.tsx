@@ -1,5 +1,4 @@
 import { useQuery, gql, useMutation } from '@apollo/client';
-import Character from './Charcter';
 import { useState } from 'react';
 // import { setContext } from "@apollo/client/link/context";
 
@@ -52,7 +51,7 @@ mutation AddCharacter ($name: String!){
 
 const ApolloPage = () => {
   const [name, setName] = useState('Morty')
-  const { loading, error, data } = useQuery(getCharacters, {
+  const { loading, error } = useQuery(getCharacters, {
     variables: { name: name}
   });
 
@@ -79,7 +78,7 @@ const ApolloPage = () => {
       <option value="Rick">Rick</option>
      </select>
      <button onClick={sendCharacter}>+++</button>
-     {data && data.characters.results.map(item => <Character key={item.id} character={item} />)}
+     {/* {data && data.characters.results.map(item => <Character key={item.id} character={item} />)} */}
   </>
 }
 

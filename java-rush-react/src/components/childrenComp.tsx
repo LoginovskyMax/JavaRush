@@ -1,4 +1,4 @@
-import React, {useState, type FC, type ReactNode } from 'react'
+import {useState, type FC, type ReactNode } from 'react'
 
 interface Props {
     render: (text:string, counter: number) => ReactNode

@@ -1,5 +1,5 @@
-import { useEffect, useState, type FC } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import { useParams } from 'react-router-dom';
 

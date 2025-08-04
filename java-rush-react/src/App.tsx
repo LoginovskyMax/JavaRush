@@ -1,20 +1,11 @@
 
 import './App.css'
 import { createContext, lazy, Suspense } from 'react'
-import Block from './components/Block'
-import Avatar from './components/CityList'
-// import RerenderTest from './components/RerenderTest'
-import authUser from './HOC/authUser'
-import ChildrenComp from './components/childrenComp'
-import UncontrolledForm from './components/UncontrolledForm'
 import FormikComp from './components/FormikComp'
 import StoreCounter from './components/StoreCounter'
-import { useAppSelector } from './store/hooks'
 // import CharactersLayout from './components/CharactersLayout'
 const CharactersLayout = lazy(() => import('./components/CharactersLayout'))
-import Pagination from './components/Pagination'
 import Query from './components/Query'
-import { useGetPokemonQuery } from './store/slices/apiSlice'
 import { Routes, Route, Link } from 'react-router-dom';
 import CharacterPage from './pages/CharacterPage'
 import ApolloPage from './components/ApolloPage'
@@ -92,7 +83,7 @@ function App() {
     <Routes>
       <Route path="/" element={ <Query />}/>
       <Route path="/form" element={ <FormikComp />}/>
-       <Route path="/cityList" element={ <CityList name='Alice'/>}/>
+       <Route path="/cityList" element={ <CityList />}/>
       <Route path="/rick" element={<CharactersLayout />}>
          <Route path="others" element={ <StoreCounter />}/>
       </Route>

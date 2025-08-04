@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState, type FC } from 'react'
+import {useCallback, useMemo, useState, type FC } from 'react'
 
 import ChildTest from './ChildTest'
 
