@@ -1,21 +1,21 @@
 import { Link, Stack } from 'expo-router';
 import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function NotFoundScreen() {
+export default function HomeDrawer() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
       <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist.</ThemedText>
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
+        <ThemedText type="title">Drawer home page</ThemedText>
+        <Link href="/(tabs)" style={styles.link}>
+          <ThemedText type="link">Go to home screen tabs!</ThemedText>
         </Link>
-
-        <Link href="/register" style={styles.link}>
-          <ThemedText type="link">Go to register!</ThemedText>
+        <Link href="/user/12345" style={styles.link}>
+          <ThemedText type="link">Go user screen!</ThemedText>
         </Link>
       </ThemedView>
     </>

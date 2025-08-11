@@ -4,18 +4,15 @@ import { StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function NotFoundScreen() {
+export default function RegisterScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
+      <Stack.Screen options={{ title: 'My regisration!' }}/>
       <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist.</ThemedText>
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
-
-        <Link href="/register" style={styles.link}>
-          <ThemedText type="link">Go to register!</ThemedText>
+        <ThemedText type="title">Registrartion</ThemedText>
+  
+        <Link href="/user/12345?type=admin" style={styles.link}>
+          <ThemedText type="link">Go user!</ThemedText>
         </Link>
       </ThemedView>
     </>

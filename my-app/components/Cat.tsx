@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Text, TextInput, View, Button, Image, Pressable, StyleSheet} from 'react-native';
+import { useRouter } from 'expo-router';
 
 type IProps = {
   name: string;
@@ -15,6 +16,8 @@ const Cat = (props:IProps) => {
 
 const [text, setText] = useState('')
 const [isHungry, setIsHungry] = useState(true);
+
+ const router = useRouter();
 
 const handleInput = (text: string) => {
     console.log(text);
@@ -50,6 +53,7 @@ const handleInput = (text: string) => {
       </Pressable>
 
       <Image source={logo}/>
+      <Button title="Go to About" onPress={() => router.navigate('/explore')} />
     </View>
   );
 };

@@ -1,21 +1,17 @@
-import { Link, Stack } from 'expo-router';
+import { Link, useLocalSearchParams } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function NotFoundScreen() {
+export default function RegisterScreen() {
+    const { id, type } = useLocalSearchParams<{ id: string, type?: string }>();
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
       <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist.</ThemedText>
+        <ThemedText type="title">User {id}, Роль = {type}</ThemedText>
         <Link href="/" style={styles.link}>
           <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
-
-        <Link href="/register" style={styles.link}>
-          <ThemedText type="link">Go to register!</ThemedText>
         </Link>
       </ThemedView>
     </>

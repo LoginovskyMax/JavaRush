@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
 import Header from './Header'
+// jest.mock('next/navigation')
 
 jest.mock('next/navigation', () => ({
       useRouter: jest.fn(() => ({
@@ -11,8 +12,15 @@ jest.mock('next/navigation', () => ({
 }));
  
 describe('тесты для компоненты Header', () => {
+  const testProps = 'Alice'
   beforeEach(() => {
-    render(<Header />)
+    render(<Header name={testProps} />)
+  })
+
+  it('Наличие текста у ссылки', async () => {
+    const a = screen.getByTestId('props-test')
+
+    expect(a).toHaveTextContent(testProps)
   })
 
   it('Наличие кнопки', () => {
@@ -21,14 +29,15 @@ describe('тесты для компоненты Header', () => {
     expect(button[0]).toBeInTheDocument()
   })
 
-  it('2 кнопки на странице', () => {
+  it('3 кнопки на странице', () => {
     const buttons = screen.getAllByRole('button')
  
     expect(buttons.length).toBe(3)
   })
 
   it('Наличие линка', () => {
-    const link = screen.getByTestId('link')
+    // const link = screen.getByTestId('link')
+    const link = screen.getByText('юзер')
  
     expect(link).toBeInTheDocument()
   })
