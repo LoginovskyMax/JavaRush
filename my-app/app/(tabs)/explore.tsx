@@ -7,8 +7,23 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { useContext, useEffect, useState } from 'react';
+import { ThemeContext } from '../_layout';
+import { Button, Text, View, Image as NativeImage } from 'react-native';
+import useFetch from '@/hooks/useFetch';
 
 export default function TabTwoScreen() {
+  const context = useContext(ThemeContext)
+  const {getData, isLoading, data} = useFetch()
+
+  const getApi = async () => {
+    await getData()
+  }
+
+  useEffect(() => {
+      getApi()
+  }, [])
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -20,6 +35,14 @@ export default function TabTwoScreen() {
           style={styles.headerImage}
         />
       }>
+      {data &&  <View>
+        <ThemedText type="title">{data[0]?.name}</ThemedText>
+        <NativeImage source={{
+          uri: data[0]?.image,
+          width: 100,
+          height: 100
+        }}/>
+        </View>}
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
@@ -39,10 +62,13 @@ export default function TabTwoScreen() {
         </ExternalLink>
       </Collapsible>
       <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
+        <Text>Актуальная тема : {context?.theme}</Text>
+             <Button
+                onPress={() => {
+                  context?.changeTheme();
+                }}
+                title='Сменить тему'
+              />
       </Collapsible>
       <Collapsible title="Images">
         <ThemedText>

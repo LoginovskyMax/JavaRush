@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Text, TextInput, View, Button, Image, Pressable, StyleSheet} from 'react-native';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type IProps = {
   name: string;
@@ -12,17 +13,44 @@ const logo = {
   height: 200,
 };
 
+const STORAGE_KEY = 'my-super-key'
+
 const Cat = (props:IProps) => {
 
 const [text, setText] = useState('')
 const [isHungry, setIsHungry] = useState(true);
 
+const storeData = async (value:string) => {
+  try {
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem(STORAGE_KEY);
+    if (value !== null) {
+      setText(JSON.parse(value))
+      console.log('data',value);
+    }
+     console.log('data2',value);
+  } catch (e) {
+     console.log(e);
+  }
+};
+
  const router = useRouter();
 
 const handleInput = (text: string) => {
-    console.log(text);
     setText(text)
+    storeData(text)
 }
+
+useEffect(() => {
+  getData()
+}, [])
 
   return (
     <View style={styles.box}>

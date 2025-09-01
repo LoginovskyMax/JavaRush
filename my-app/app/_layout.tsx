@@ -5,30 +5,32 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { useState } from 'react';
+import { useState, createContext } from 'react';
+
+type Theme = 'light' | 'dark'
+
+interface IThemeContext {
+  theme: Theme,
+  changeTheme: () => void
+}
+
+export const ThemeContext = createContext<IThemeContext | null>(null)
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  const [theme, setTheme] = useState<Theme>('light')
 
-  const [isAuthorized, setisAuthorized] = useState(false)
-
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
+  const changeTheme = () => {
+    setTheme( currentTheme => currentTheme === 'light' ? 'dark' : 'light' )
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <ThemeContext.Provider value={{theme,changeTheme}}>
       <Stack>
-        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        {isAuthorized && <Stack.Screen name="register" />}
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
-    </ThemeProvider>
+      </ThemeContext.Provider>
+  
   );
 }
