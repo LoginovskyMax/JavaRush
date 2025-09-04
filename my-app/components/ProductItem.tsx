@@ -12,16 +12,19 @@ const ProductItem = ({data}:Iprops) => {
 
  const router = useRouter();
 
+ const navigateToProduct = () => {
+    router.navigate(`/(tabs)/product-page/${data.id}`)
+ }
+
   return (
-    <View style={styles.box}>
+    <Pressable style={styles.box}  onPress = {navigateToProduct}>
       <Image source={{uri:data.images[0], width: 172, height:105}}/>
       <View style={styles.textBox}>
         <Text>{data.title}</Text>
          <Text>{data.brand}</Text>
          <Text>${data.price}</Text>
       </View>
-
-    </View>
+    </Pressable>
   );
 };
 

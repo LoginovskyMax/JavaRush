@@ -6,31 +6,35 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useState, createContext } from 'react';
+import { ProductItem } from '@/hooks/useFetch';
 
-type Theme = 'light' | 'dark'
+type Basket = ProductItem []
 
 interface IThemeContext {
-  theme: Theme,
-  changeTheme: () => void
+  basket: Basket,
+  addToBasket: (item:ProductItem) => void
 }
 
-export const ThemeContext = createContext<IThemeContext | null>(null)
+export const StoreContext = createContext<IThemeContext | null>(null)
 
 export default function RootLayout() {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [basket, setBasket] = useState<Basket>([])
 
-  const changeTheme = () => {
-    setTheme( currentTheme => currentTheme === 'light' ? 'dark' : 'light' )
+  const addToBasket = (product:ProductItem) => {
+    const prevBasket = [...basket]
+
+    prevBasket.push(product)
+
+    setBasket( prevBasket )
   }
 
   return (
-      <ThemeContext.Provider value={{theme,changeTheme}}>
+      <StoreContext.Provider value={{basket, addToBasket}}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
-      </ThemeContext.Provider>
-  
+      </StoreContext.Provider>
   );
 }

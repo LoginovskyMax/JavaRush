@@ -3,7 +3,7 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { Link, useRouter } from 'expo-router';
-import useFetch from '@/hooks/useFetch';
+import useFetch, { ProductItem as ProductType } from '@/hooks/useFetch';
 import { useEffect } from 'react';
 import ProductItem from '@/components/ProductItem';
 
@@ -15,7 +15,7 @@ export default function HomeScreen() {
    const {data, isLoading, getData} = useFetch()
 
    useEffect(() => {
-      getData()
+      getData({query: 'limit=10'})
    }, [])
 
   return (
@@ -29,7 +29,7 @@ export default function HomeScreen() {
       }>
         {isLoading && <Text>Загрузка</Text>}
         {!isLoading && <View style={styles.productContainer}>
-          {data.map(product => <ProductItem data={product} key={product.id} />)}
+          {(data as ProductType[]).map(product => <ProductItem data={product} key={product.id} />)}
           </View>}
       {/* <Link href="/explore">
       <ThemedText type="link">Go to explore index!</ThemedText>
