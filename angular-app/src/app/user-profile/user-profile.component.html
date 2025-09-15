@@ -1,0 +1,24 @@
+<div>
+  <p>user-profile works!</p>
+  <p>{{userName}}</p>
+  <p [ngClass]="{
+     'red' : isButtonDisabled
+  }">Возраст: {{ userAge }}</p>
+  <p>Статус: {{ userAge >= 18 ? 'Совершеннолетний' : 'Несовершеннолетний' }}</p>
+  <p>Статус через функции: {{ showStatus() }}</p>
+
+  <img [src]="autoUrl" alt="Аватар" width="100">
+
+  <div class="user-profile__inputs-box">
+  <input (input)="onInput($event)" placeholder="Введите новое имя">
+
+  <input [(ngModel)]="userName">
+
+ <button (click)="toggleDisabled()">unDisabled</button>
+
+  <button [disabled]="isButtonDisabled">Мой профиль</button>
+  <button (click)="greetUser()">Поприветствовать</button>
+  </div>
+
+
+</div>

@@ -1,0 +1,11 @@
+.user-profile{
+    &__inputs-box {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.red {
+    color: red;
+}
