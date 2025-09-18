@@ -1,0 +1,24 @@
+<h3>Список пользователей</h3>
+<ul>
+  <!-- Для каждого пользователя в массиве users будет создан этот элемент <li> -->
+
+    <li *ngFor="let user of users; 
+              let i = index; 
+              let isEven = even
+              let isLast = last"
+               [style.background]="isEven ? '#f0f0f0' : 'white'"
+    >
+
+      <span>{{ i + 1 }}. {{ user.name }}</span>
+
+      <button (click)="deleteUser(user.id)">X</button>
+    </li>
+</ul>
+
+@if (a > b) {
+  {{a}} is greater than {{b}}
+} @else if (b > a) {
+  {{a}} is less than {{b}}
+} @else {
+  {{a}} is equal to {{b}}
+}

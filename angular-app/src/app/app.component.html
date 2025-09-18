@@ -221,6 +221,13 @@
       <p>Congratulations! Your app is running. 🎉</p>
 
       <app-user-profile></app-user-profile>
+       <button (click)="toggleDisabled()">{{showList ? 'Скрыть список' : 'Показать список'}} пользователей</button>
+      <app-users-list 
+        *ngIf="showList"
+        [users]="users"
+        [deleteUser]="removeUser"
+  
+      />
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
