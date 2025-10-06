@@ -1,0 +1,26 @@
+<aside class="filters">
+   @if(keywords.length){
+    <div class="filters__keyword-box">
+       <div *ngFor="let key of keywords" 
+         class="filters__keyword"
+       >
+         <span>{{key.name}}</span>
+         <button (click)="deleteFilter(key.id)">X</button>
+      </div>
+    </div>
+
+   }
+   <div *ngFor="let block of filters" class="filters__block">
+        <p>{{block.title}}</p>
+        <div *ngFor="let filter of block.list" class="filters__item">
+            <input 
+               type="checkbox" 
+               class="filters__checkbox" 
+               [id]="filter.id"
+               [checked]="filter.check"
+               (change)="changeFilters(filter)"
+               >
+            <label [for]="filter.id">{{filter.name}}</label>
+        </div>
+   </div>
+</aside>

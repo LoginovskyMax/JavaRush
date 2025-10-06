@@ -1,0 +1,14 @@
+<header class="header">
+  <div class="header__box">
+    <img src="logo.png" alt="logo" height="44">
+    <ul class="header__list">
+      <li *ngFor="let item of list" class="header__item">
+        <a [href]="item.link">{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="header__btns">
+
+  </div>
+
+</header>
