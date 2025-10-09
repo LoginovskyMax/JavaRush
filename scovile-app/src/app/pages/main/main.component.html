@@ -1,6 +1,9 @@
 <main class="main">
     <img src="header.png" alt="img" class="main__banner">
-    <div>
+    <div class="main__wrapper">
         <app-filters />
+        <div class="main__product-list">
+           <app-product-card *ngFor="let product of products" [product]="product" class="main__product"/>
+        </div>
     </div>
 </main>

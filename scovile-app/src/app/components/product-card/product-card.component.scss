@@ -1,0 +1,29 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 10px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    &__descr {
+         color: #757575;
+         font-family: 'Inter';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 14px;
+    }
+
+    &__image {
+        width: 100%;
+    }
+}

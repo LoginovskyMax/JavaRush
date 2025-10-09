@@ -2,4 +2,20 @@
     &__banner {
         width: 100%;
     }
+
+    &__wrapper {
+        display: flex;
+    }
+
+    &__product-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        gap: 32px;
+        padding: 20px;
+    }
+
+    &__product {
+        width: calc(33% - 32px);
+    }
 }
