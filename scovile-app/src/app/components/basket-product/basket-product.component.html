@@ -1,0 +1,16 @@
+<div class="product">
+  <img [src]="product?.image" class="product__image">
+  <div class="product__main">
+    <p class="product__title">{{product?.title}}</p>
+    <p class="product__price">{{product?.price}}</p>
+    <div class="product__btns-box">
+        <div class="product__amount-box">
+            <button class="product__amount-btn" (click)="minusProduct()">-</button>
+            <span>{{product?.amount}}</span>
+            <button class="product__amount-btn" (click)="plusProduct()">+</button>
+        </div>
+        <button (click)="removeProduct()">Remove X</button>
+    </div>
+  </div>
+
+</div>

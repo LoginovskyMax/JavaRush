@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [NgFor],
+  imports: [NgFor, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -11,23 +12,23 @@ export class HeaderComponent {
   list = [
     {
       name: 'Products', 
-      link: ''
+      link: '/home'
     },
         {
       name: 'Pain Guides',
-      link: ''
+      link: '/'
     },
         {
       name: 'Community',
-      link: ''
+      link: '/'
     },
         {
       name: 'Resources',
-      link: ''
+      link: '/'
     },
         {
       name: 'Contact', 
-      link: ''
+      link: '/'
     }
   
   ]

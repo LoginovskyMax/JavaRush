@@ -3,7 +3,7 @@
     <img src="logo.png" alt="logo" height="44">
     <ul class="header__list">
       <li *ngFor="let item of list" class="header__item">
-        <a [href]="item.link">{{item.name}}</a>
+        <a [routerLink]="item.link">{{item.name}}</a>
       </li>
     </ul>
   </div>
