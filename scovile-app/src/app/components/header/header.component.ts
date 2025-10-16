@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -36,11 +36,12 @@ export class HeaderComponent {
       link: '/'
     }
   ]
-   constructor(private authService:AuthService){}
- 
-  ngOnInit() {
-     this.user = this.authService.user
+   constructor(private authService:AuthService){
+    effect(() => {
+       this.user = this.authService.user()
+    });
    }
+
 
   goToRegistrate(){
      this.router.navigate(['/registrate'])

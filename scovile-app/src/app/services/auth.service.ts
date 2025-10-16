@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 const users = [
   {
@@ -17,7 +17,7 @@ const USER_TOKEN = 'user-token'
 })
 export class AuthService {
   private token = ''
-  user:typeof users[0] | null= null
+  user = signal<typeof users[0] | null>(null);
 
   constructor() { }
 
@@ -54,7 +54,7 @@ export class AuthService {
     localStorage.setItem(USER_TOKEN, token)
 
     if(user) {
-      this.user = user
+      this.user.set(user)
     }
   }
 
