@@ -8,7 +8,11 @@
     </ul>
   </div>
   <div class="header__btns">
-
+    @if(user) {
+      <p>welcome {{user?.name}}</p>
+      <button (click)="logOut()">Log out</button>
+    } @else {
+      <button (click)="goToRegistrate()">Register</button>
+    }
   </div>
-
 </header>

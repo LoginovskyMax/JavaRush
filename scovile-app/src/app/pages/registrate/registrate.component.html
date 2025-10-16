@@ -1,0 +1,39 @@
+
+<section>
+   <p>registrate</p> 
+   <form 
+    class="form"
+    #loginForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    >
+  <div>
+    <label>Email:</label>
+    <input 
+       type="text" 
+       name="email" 
+       [(ngModel)]="userData.email"
+       required
+       minlength="3"
+       #username="ngModel"
+       >
+  </div>
+    <!-- Показываем блок с ошибками, только если поле невалидно и его уже "трогали" -->
+    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="errors">
+      <!-- Конкретные сообщения для каждой ошибки -->
+      <div *ngIf="username.hasError('required')">
+        Имя пользователя обязательно для заполнения.
+      </div>
+      <div *ngIf="username.errors?.['minlength']">
+        Имя должно содержать не менее 3 символов.
+      </div>
+    </div>
+  <div>
+    <label>Password:</label>
+    <input type="password" name="password" [(ngModel)]="userData.password">
+  </div>
+  <button type="submit"  [disabled]="loginForm.invalid">Войти</button>
+</form>
+@if(error){
+    <p>{{error}}</p>
+}
+</section>
