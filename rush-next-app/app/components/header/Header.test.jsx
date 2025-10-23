@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen } from '@testing-library/react'
-import Header from './Header'
+import Header from './header/Header'
 // jest.mock('next/navigation')
 
 jest.mock('next/navigation', () => ({

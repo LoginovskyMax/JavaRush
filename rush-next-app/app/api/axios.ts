@@ -1,22 +1,22 @@
 import axios from 'axios';
+import { getCookies } from '../actions/cookies';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://rickandmortyapi.com/api/',
+  baseURL: 'http://localhost:3000/',
   timeout: 5000,
 });
 
-// axiosInstance.interceptors.request.use(
-//   (config) => {
-//     const accessToken = localStorage.getItem('accessToken');
-//     const language = localStorage.getItem('language') || 'en';
-//     if (accessToken) {
-//       config.headers['Authorization'] = `Bearer ${accessToken}`;
-//     }
-//     config.headers['Accept-Language'] = language;
-//     return config;
-//   },
-//   (error) => Promise.reject(error)
-// );
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    const token = await getCookies('token')
+
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 
 // axiosInstance.interceptors.response.use(

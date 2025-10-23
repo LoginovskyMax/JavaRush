@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "java rush next site",
@@ -22,12 +12,15 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) { 
+
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header name="Alice" />
-        {children}
+      <body>
+        <StoreProvider>
+           <Header/>
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );
